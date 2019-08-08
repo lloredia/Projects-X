@@ -1,0 +1,2 @@
+#COMMAND GOES HERE 
+netstat -tulpn | grep java
