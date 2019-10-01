@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Version: 10.1.2019
+# pass a flat ascii file with host:port, one record per line
+
+# like debugging? uncomment below
+#set -x
+#pass host list to command
+: ${1?"Usage: $0 <raw_hosts_ports>"}
+#port numbers confirmatiion
+for host_port in $(cat $1); do
+#get SSL certs and pass it to the output
+        echo -e "[+] Getting ssl cert for $host_port ...\n"
+        openssl s_client -showcerts -connect "$host_port" <<< "Q" > "CERT-$(date +%Y-%m-%d_%H:%M:%S).$host_port.out"
+done
