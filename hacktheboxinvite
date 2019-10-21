@@ -1,0 +1,44 @@
+    First, visit the Hack the Box site and read along its FAQs and other useful stuff written there.
+    You will be told to go to https://www.hackthebox.eu/invite to join HTB.
+    When you go to that page, you will see a text box asking you for an invite code.
+    Right click on the page, and open inspect element. Alternatively, press Ctrl+Shift+I to open the Chrome Developers Tools.
+    Go through the elements tab and you will find a script with source as: /js/inviteapi.min.js
+
+See the script src: /js/inviteapi.min.js
+
+6. So now, go to https://www.hackthebox.eu/js/inviteapi.min.js . You will see a JS file like this.
+See the makeInviteCode which is highlighted
+
+7. makeInviteCode looks interesting. So let’s go back to https://www.hackthebox.eu/invite and try to find its contents.
+
+8. Goto console tab in Chrome Developer Tools, and type makeInviteCode() and press ENTER. You will get a 200 Success status and data as shown below.
+See the message in data
+
+9. When you click the small arrow alongside data, you will see the encoding type to be Base64.
+Base64 enc type
+
+10.Let’s decode that message! Copy the contents of data. And search online for a Base64 Decryptor. I used the Google search’s first result: https://www.base64decode.org/
+
+11. Paste the copied data onto the text box and click DECODE. You will get something like below.
+
+12. So, in order to generate an invite code, we need to make a POST request to https://www.hackthebox.eu/api/invite/generate.
+
+13. Fire up your terminal. And make a POST request by typing:
+
+    curl -XPOST https://www.hackthebox.eu/api/invite/generate
+
+14. You will get a success message as:
+
+    {“success”:1,”data”:{“code”:”somerandomcharacters12345=”,”format”:”encoded”},”0":200}
+
+15. As you saw, we code a code. But this is not our invite code as it says format:encoded.
+
+16. Lets’s try decoding it, by again using https://www.base64decode.org/.
+
+17. Paste the code you got as the response of the POST request into the textbox. Voila! You get your invite code.
+You get your invite code (Don’t try using this invite code as it won’t work for you)
+
+18. Now, finally go to https://www.hackthebox.eu/invite and paste the Invite Code you got in the textbox asking for the same.
+
+19. You’re in! You can sign up on the site now and become a member.
+Happy Hacking!
