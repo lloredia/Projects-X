@@ -99,3 +99,43 @@ Open the snake.py script and add ‘print slither’ right before it asks for yo
 pasted image 0.png
 
 Now when you run the script it will print both the username and the full password to the console. Noticing that the keys array is 10 values long we can determine the hackthebox flag will utilize the first 10 characters of the password that is returned.
+
+
+
+
+
+
+
+
+EASIER METHOD]
+make quick changes (*****)
+
+slither = aa + db + nn + ef + rr + gh + lr + ty
+print 'Authentication required'
+print ''
+****print slither****
+user_input = raw_input('Enter your username\n')
+if user_input == slither:
+    pass
+
+else:
+    print 'Wrong username try harder'
+    exit()
+
+***easy = []
+for char in chars: 
+         easy.append(chr(char))***
+
+***print "".join(easy)***
+
+pass_input = raw_input('Enter your password\n')
+for passes in pass_input:
+    for char in chars:
+        if passes == str(chr(char)):
+            print 'Good Job'
+            break
+        else:
+            print 'Wrong password try harder'
+            exit(0)
+    break
+
