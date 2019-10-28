@@ -1,0 +1,37 @@
+<html> 
+<head>  
+----  Msg under head ---- TESTING 123 
+<title> Pratice--- [+]projectX  </title> 
+<style>
+body {color:darkgoldenrod;
+}
+h1 {
+font-family: Arial, sans-serif;
+font-size: 32px;
+color:black ;    
+}
+</style>    
+</head> 
+<body>
+<h1> (h1) HEADER No1  </h1>            
+<p> (P )for a line of  paragrah </p>
+<p> (title) is the name of the web page [+] ProjectX </p>  
+<p> (html) start the script </p>
+<p> (head) second to come after the html meaning starting of the script</p> 
+<button id="color"> click me! </button>
+<script> document.getElementById('color').onclick = changeColor ;
+var currentColor = "darkgoldenrod";
+function changeColor() {
+    if(currentColor == "darkgoldenrod" ) {
+     document.body.style.color = "green"
+    } else {
+    document.body.style.color = "darkgoldenrod";
+    currentColor = "color";
+    }
+    return currentColor;
+}
+</script>
+</body> 
+</head>  
+</html>  
+  
