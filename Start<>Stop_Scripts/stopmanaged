@@ -1,0 +1,39 @@
+#!/bin/sh
+# startmanaged.sh
+#
+f_flag=false
+usage="$(basename "$0") [-h] [-f] [server_name] [weblogic_password]
+where:
+    -h  show this help text
+    -f  force shutdown servers
+    server_name:  This is optional and can be used to stop single managed server
+        weblogic_password: This is optional and password can be provided as 2nd argument along with server_name"
+
+while getopts 'hf' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+    f) f_flag=true
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+weblogic_password=$2
+server_list=(opera_ui1)
+
+if [ $# != 2 ]
+then
+  read -sp "Enter weblogic password: " weblogic_password
+fi
+
+if [ $1 ]
+then
+  $WLST_LOC/wlst.sh -i ~/bin/stopmanagedserver.py $1 $weblogic_password $f_flag
+else
+  for i in  "${server_list[@]}"
+  do
+    $WLST_LOC/wlst.sh -i ~/bin/stopmanagedserver.py $i $weblogic_password $f_flag
+  done
+fi
