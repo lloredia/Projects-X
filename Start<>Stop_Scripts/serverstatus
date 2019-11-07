@@ -1,0 +1,17 @@
+#!/bin/sh
+# serverstatus.sh
+#
+weblogic_password=$1
+
+if [ $# != 1 ]
+then
+  read -sp "Enter weblogic password: " weblogic_password
+fi
+echo ''
+echo "Checking servers status..."
+$WLST_LOC/wlst.sh -i ~/bin/serverstatus.py $weblogic_password |grep "Current state"
+if [ $? -ne 0 ]
+then
+  echo "Adminserver is not running"
+  echo "Start adminserver then run this script"
+fi
