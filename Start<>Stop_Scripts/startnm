@@ -1,0 +1,25 @@
+#!/bin/sh
+# startnm.sh
+#
+usage="$(basename "$0") [-h] [weblogic_password]
+where:
+    -h  show this help text
+    weblogic_password: This is optional and password can be provided as command line"
+
+while getopts 'h' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+weblogic_password=$1
+if [ $# != 1 ]
+then
+  read -sp "Enter weblogic password: " weblogic_password
+fi
+
+. $WLSERVER/server/bin/setWLSEnv.sh
+java -Dweblogic.security.SSL.ignoreHostnameVerification=true -Dweblogic.security.JavaStandardTrustKeyStorePassPhrase=changeit weblogic.WLST -i ~/bin/startnodemanager.py $weblogic_password
