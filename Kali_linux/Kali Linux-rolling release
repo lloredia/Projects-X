@@ -32,3 +32,8 @@ During your initial system upgrade some of the packages may become obsolete, hen
 
 $ sudo apt autoremove
 
+
+
+https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/
+
+
