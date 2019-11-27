@@ -32,7 +32,14 @@ During your initial system upgrade some of the packages may become obsolete, hen
 
 $ sudo apt autoremove
 
+---------------------------------fixe for the new updates 
 
+The simplest fix is to replace the existing HTTP protocol with the secure HTTPS protocol.
+Hence, change to the relevant /etc/apt/sources.list repositories located within /etc/apt/sources.list
+FROM:
+deb http://http.kali.org/kali kali-rolling main non-free contrib
+TO:
+deb http(s)://http.kali.org/kali kali-rolling main non-free contrib
 
 https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/
 
