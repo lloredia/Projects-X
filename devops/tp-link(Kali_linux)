@@ -1,0 +1,34 @@
+How To Enable Monitor Mode on TP-Link TL-WN722N v2/v3
+
+[Download and Installation]
+01]  #apt update && apt upgrade]
+
+02] #apt install -y bc linux-headers-amd64
+
+
+03] #git clone https://github.com/kimocoder/rtl8188eus
+or
+direct download from :
+https://github.com/kimocoder/rtl8188e...
+
+
+04] #cd rtl8188eus
+
+05] #cp realtek_blacklist.conf /etc/modprobe.d
+
+06] #make
+
+07] #make install
+
+08] [Enabling Monitor Mode]
+
+#ifconfig wlan0 down
+#airomon-ng,  check kill
+#iwconfig wlan0 mode monitor
+#ifconfig wlan0 up
+
+airodump-ng wlan0
+
+09] [Testing Packet Injection]
+
+aireplay-ng --test wlan0
