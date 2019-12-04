@@ -1,6 +1,6 @@
 #!/bin/sh
 # serverstatus.sh
-#
+#https://github.com/lloredia/Projects-X/tree/master/Start%3C%3EStop_Scripts
 weblogic_password=$1
 
 if [ $# != 1 ]
