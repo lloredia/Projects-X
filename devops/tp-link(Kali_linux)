@@ -27,6 +27,8 @@ https://github.com/kimocoder/rtl8188e...
 #iwconfig wlan0 mode monitor
 #ifconfig wlan0 up
 
+ifconfig wlan0mon |grep inet |awk '{print $2}'
+
 airodump-ng wlan0
 
 09] [Testing Packet Injection]
