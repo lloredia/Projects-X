@@ -41,4 +41,10 @@ exploit -j
 
 - sessions -i 1
 
+=========
+ PARAMS
+=========
+ -j flag tells it to run in the context of a job. Running the exploit as a job allows it to run in the background and gives you control of the process running.
+
+ -z simply means to not interact with the session once it becomes active. 
 
