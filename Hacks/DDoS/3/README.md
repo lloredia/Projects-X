@@ -1,5 +1,3 @@
-What is this?
-
 Wreckrequests is a script, which allows you to run DDoS attacks with HTTP-flood(GET/POST). It's written in pure Python and uses proxy-servers as "bots". OF COURSE, this script is not universal and you can't just drop Pentagon/NSA/whatever website with just a single mouse click. Each attack is unique, and for each website you'd need to search for vulnerabilities and exult them.
 
 Warning: This script is published for educational purposes only! Author will accept no responsibility for any consequences, damage or loss which might result from use.
