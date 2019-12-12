@@ -1,4 +1,14 @@
+usage 
+aircrack-ng [options] <.cap / .ivs file(s)>
+To have aircrack-ng conduct a WEP key attack on a capture file, pass it the filename, either in .ivs or .cap/.pcap format.
 
+#WPA Wordlist Mode
+aircrack-ng -w password.lst wpa.cap
+Specify the wordlist to use (-w password.lst) and the path to the capture file (wpa.cap) containing at least one 4-way handshake.
+
+#Basic WEP Cracking
+aircrack-ng all-ivs.ivs
+To have aircrack-ng conduct a WEP key attack on a capture file, pass it the filename, either in .ivs or .cap/.pcap format.
 
 
 figlet #nice banners 
