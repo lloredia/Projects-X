@@ -1,4 +1,6 @@
 #!/bin/bash
+#password must always be encryted with base64 
+#command ( echo 'T3JAY2xlMTIzNAo=' | basde64 -d)
  export CREDS=T3JAY2xlMTIzNAo=
 
 : ${1?"Usage: $0 <host_list_file>"}
