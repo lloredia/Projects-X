@@ -1,0 +1,28 @@
+#!/bin/sh
+# .bashrc file for Opera Cloud SB
+export ORACLE_HOME=/u01/app/oracle/middleware/Oracle_Home
+export DOMAIN_HOME=/u01/app/oracle/middleware/Oracle_Home/user_projects/domains/operasbdomain
+export NM_HOME=/u01/app/oracle/middleware/Oracle_Home/user_projects/domains/operasbdomain/nodemanager
+export WLST_LOC=/u01/app/oracle/middleware/Oracle_Home/oracle_common/common/bin
+export JAVA_HOME=/u01/jdk
+export WLSERVER=$ORACLE_HOME/wlserver
+export CERT_LOC=/u01/micros/opera/security
+alias cdhome='cd $ORACLE_HOME'
+alias cdsblog='cd $DOMAIN_HOME/servers/opera_sb1/logs'
+alias cdadminlog='cd $DOMAIN_HOME/servers/AdminServer/logs'
+alias sblog='tail -100f $DOMAIN_HOME/servers/opera_sb1/logs/opera_sb1.log'
+alias sbout='tail -100f $DOMAIN_HOME/servers/opera_sb1/logs/opera_sb1.out'
+alias esslog='tail -100f $DOMAIN_HOME/servers/opera_ess1/logs/opera_ess1.log'
+alias essout='tail -100f $DOMAIN_HOME/servers/opera_ess1/logs/opera_ess1.out'
+alias adminlog='tail -100f $DOMAIN_HOME/servers/AdminServer/logs/AdminServer.log'
+alias adminout='tail -100f $DOMAIN_HOME/servers/AdminServer/logs/AdminServer.out'
+alias nmprop='cat $NM_HOME/nodemanager.properties'
+alias nmlog='tail -100f $NM_HOME/nodemanager.log'
+alias cddomain='cd $DOMAIN_HOME'
+alias cdconfig='cd $DOMAIN_HOME/config'
+alias cdovd='cd $DOMAIN_HOME/config/fmwconfig/ovd/default'
+alias cdopatch='cd $ORACLE_HOME/OPatch'
+alias cdcommon='cd $ORACLE_HOME/oracle_common/common/bin'
+alias cdjrebin='cd $JAVA_HOME/jre/bin'
+alias cdcert='cd $CERT_LOC'
+PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$DOMAIN_HOME/bin:$ORACLE_HOME/oracle_common/bin:$ORACLE_HOME/oracle_common/common/bin:$ORACLE_HOME/OPatch:$PATH:.
