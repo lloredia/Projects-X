@@ -28,7 +28,7 @@ fi
 if [[ ! -z $vopt ]]
 then
 {
-echo -e "tecmint_monitor version 0.1\nDesigned by Tecmint.com\nReleased Under Apache 2.0 License"
+echo -e "version 0.1\nDesigned by lesley\nReleased Under Apache 2.0 License"
 }
 fi
 
