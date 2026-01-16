@@ -59,5 +59,5 @@ This project enhances operational efficiency through automation and security. Th
 
 This project requires the following dependencies:
 
-- **Programming Language:** Shell
+- **Programming Language:** Shell,ptyhon 
 - **Package Manager:** Bash
